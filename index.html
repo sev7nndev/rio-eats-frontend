@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio Eats - Plataforma SaaS para Restaurantes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-orange-600">🍽️ Rio Eats</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#recursos" class="text-gray-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
+                        <a href="#precos" class="text-gray-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium">Preços</a>
+                        <a href="/login" class="text-gray-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                        <a href="/registro" class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-200">Começar Grátis</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-orange-600" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#recursos" class="text-gray-600 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium">Recursos</a>
+                    <a href="#precos" class="text-gray-600 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium">Preços</a>
+                    <a href="/login" class="text-gray-600 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium">Login</a>
+                    <a href="/registro" class="bg-orange-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-orange-700 transition duration-200">Começar Grátis</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Transforme seu Restaurante em um<br>
+                <span class="text-yellow-300">Negócio Digital</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-100">
+                Plataforma SaaS completa para gerenciamento de pedidos, pagamentos e delivery.
+            </p>
+            <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                <a href="/registro" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition duration-200">
+                    Começar Grátis Agora
+                </a>
+                <a href="#demo" class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition duration-200">
+                    Ver Demo
+                </a>
+            </div>
+            <div class="mt-12">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 inline-block">
+                    <p class="text-sm text-gray-200">🚀 Deploy realizado automaticamente pelo MiniMax Agent</p>
+                    <p class="text-xs text-gray-300 mt-1">Vercel + CDN Global + SSL Automático</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="recursos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Tudo que você precisa em uma plataforma
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Recursos profissionais para transformar seu restaurante
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-utensils text-orange-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Cardápio Digital</h3>
+                    <p class="text-gray-600">Crie e gerencie seu cardápio digital em tempo real com fotos, descrições e preços.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shopping-cart text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Pedidos em Tempo Real</h3>
+                    <p class="text-gray-600">Receba pedidos instantaneamente no seu painel administrativo com notificações.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-credit-card text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Pagamentos Seguros</h3>
+                    <p class="text-gray-600">Integração com Mercado Pago, PIX, cartão e dinheiro com confirmação automática.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Relatórios Completos</h3>
+                    <p class="text-gray-600">Dashboards com vendas, pedidos, clientes e relatórios financeiros detalhados.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fab fa-whatsapp text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Integração WhatsApp</h3>
+                    <p class="text-gray-600">Automatize confirmações, cardápios e atendimento via WhatsApp Business.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cogs text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Controle Total</h3>
+                    <p class="text-gray-600">Configure disponibilidade, horários, taxas de entrega e muito mais de forma simples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Preços Simples e Transparentes
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Um único plano com tudo incluído
+                </p>
+            </div>
+
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-8 border-4 border-orange-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                            Plano Recomendado
+                        </span>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Rio Eats Pro</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 99,99</span>
+                            <span class="text-gray-600">/mês</span>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8 text-left">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Cardápio digital ilimitado
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Pedidos em tempo real
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Integração Mercado Pago
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                WhatsApp Business
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Relatórios completos
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Suporte prioritário
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                Domínio personalizado
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                API completa
+                            </li>
+                        </ul>
+                        
+                        <a href="/registro" class="w-full bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-700 transition duration-200 block text-center">
+                            Começar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Pronto para Digitalizar seu Restaurante?
+            </h2>
+            <p class="text-xl mb-8 text-gray-100">
+                Junte-se a centenas de restaurantes que já transformaram seus negócios
+            </p>
+            <a href="/registro" class="inline-block bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition duration-200">
+                Criar Conta Gratuita
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🍽️ Rio Eats</h3>
+                    <p class="text-gray-400">
+                        A plataforma mais completa para restaurantes digitais.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Produto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#recursos" class="hover:text-white">Recursos</a></li>
+                        <li><a href="#precos" class="hover:text-white">Preços</a></li>
+                        <li><a href="/demo" class="hover:text-white">Demo</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/help" class="hover:text-white">Central de Ajuda</a></li>
+                        <li><a href="/contact" class="hover:text-white">Contato</a></li>
+                        <li><a href="/status" class="hover:text-white">Status</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Conecte-se</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Rio Eats. Todos os direitos reservados.</p>
+                <p class="mt-2 text-sm">
+                    <i class="fas fa-rocket text-orange-500 mr-1"></i>
+                    Deploy realizado automaticamente pelo MiniMax Agent
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Status indicator -->
+    <div class="fixed bottom-4 right-4">
+        <div class="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg pulse-animation">
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+                <span class="text-sm font-medium">Online</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        console.log('🚀 Rio Eats carregado com sucesso!');
+        console.log('📱 Interface otimizada para mobile');
+        console.log('⚡ Deploy automático realizado pelo MiniMax Agent');
+    </script>
+</body>
+</html>
