@@ -1,268 +1,767 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rio Eats</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio Eats - Plataforma SaaS para Restaurantes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    .hero {
-      background: linear-gradient(to right, #ff6b6b, #f06595);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .hero h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .highlight {
-      color: #ffe066;
-    }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      margin: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b35;
+        }
 
-    .btn-primary {
-      background-color: #fff;
-      color: #ff6b6b;
-    }
+        .nav-links {
+            display: none;
+        }
 
-    .btn-secondary {
-      background-color: #333;
-      color: #fff;
-    }
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+        }
 
-    .features {
-      background-color: #fff;
-      padding: 40px 20px;
-    }
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        .nav-link:hover {
+            background-color: #f8f9fa;
+        }
 
-    .feature-card {
-      background-color: #f1f1f1;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
+        .nav-link.primary {
+            background-color: #ff6b35;
+            color: white;
+        }
 
-    .feature-icon {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
+        .nav-link.primary:hover {
+            background-color: #e55a2b;
+        }
 
-    .pricing {
-      background-color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+        }
 
-    .pricing-card {
-      background-color: #f1f1f1;
-      padding: 30px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin: auto;
-    }
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
 
-    .pricing-badge {
-      background-color: #ff6b6b;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9em;
-      margin-bottom: 10px;
-    }
+        .mobile-menu {
+            display: none;
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+        }
 
-    .price {
-      font-size: 2em;
-      margin: 10px 0;
-    }
+        .mobile-menu.show {
+            display: block;
+        }
 
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-    }
+        .mobile-menu a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
 
-    .features-list li {
-      margin: 8px 0;
-    }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+            background-color: #ff6b35;
+            color: white;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
 
-    .pricing-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #ff6b6b;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
 
-    .cta {
-      background-color: #f06595;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
 
-    .footer {
-      background-color: #333;
-      color: white;
-      padding: 40px 20px;
-    }
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
 
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+        .hero .highlight {
+            color: #ffd700;
+        }
 
-    .footer-section h4 {
-      margin-bottom: 10px;
-    }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
 
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
 
-    .footer-section ul li {
-      margin: 6px 0;
-    }
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
 
-    .footer-section ul li a {
-      color: #ccc;
-      text-decoration: none;
-    }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
 
-    .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #aaa;
-    }
+        .btn-primary {
+            background-color: #ffd700;
+            color: #333;
+        }
 
-    .status-indicator {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background-color: #28a745;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.8em;
-    }
-  </style>
+        .btn-primary:hover {
+            background-color: #ffed4e;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        .deploy-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .deploy-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .icon-orange { background: #ff6b35; }
+        .icon-green { background: #28a745; }
+        .icon-blue { background: #007bff; }
+        .icon-purple { background: #6f42c1; }
+        .icon-red { background: #dc3545; }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            text-align: center;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b35;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .price-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .price-period {
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-btn {
+            display: block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .pricing-btn:hover {
+            background: #e55a2b;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background-color: #ffd700;
+            color: #333;
+        }
+
+        .cta .btn:hover {
+            background-color: #ffed4e;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #555;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #ff6b35;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 30px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
+        }
+
+        .footer-bottom .rocket {
+            color: #ff6b35;
+            margin-right: 5px;
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-indicator::before {
+            content: "●";
+            color: white;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    🍽️ Rio Eats
+                </div>
+                <div class="nav-links">
+                    <a href="#recursos" class="nav-link">Recursos</a>
+                    <a href="#precos" class="nav-link">Preços</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="registro.html" class="nav-link primary">Começar Grátis</a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    ☰
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#recursos">Recursos</a>
+                <a href="#precos">Preços</a>
+                <a href="login.html">Login</a>
+                <a href="registro.html">Começar Grátis</a>
+            </div>
+        </div>
+    </header>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container">
-    <h1>
-      Transforme seu Restaurante em um<br>
-      <span class="highlight">Negócio Digital</span>
-    </h1>
-    <p>Plataforma SaaS completa para gerenciamento de pedidos, pagamentos e delivery.</p>
-    <div class="hero-buttons">
-      <a href="registro.html" class="btn btn-primary">Começar Grátis Agora</a>
-      <a href="demo.html" class="btn btn-secondary">Ver Demo</a>
-    </div>
-    <div class="deploy-info">
-      <p>🚀 Deploy realizado automaticamente pelo MiniMax Agent</p>
-      <p>Vercel + CDN Global + SSL Automático</p>
-    </div>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Transforme seu Restaurante em um<br>
+                <span class="highlight">Negócio Digital</span>
+            </h1>
+            <p>
+                Plataforma SaaS completa para gerenciamento de pedidos, pagamentos e delivery.
+            </p>
+            <div class="hero-buttons">
+                <a href="registro.html" class="btn btn-primary">
+                    Começar Grátis Agora
+                </a>
+                <a href="demo.html" class="btn btn-secondary">
+                    Ver Demo
+                </a>
+            </div>
+            <div class="deploy-info">
+                <p>🚀 Deploy realizado automaticamente pelo MiniMax Agent</p>
+                <p>Vercel + CDN Global + SSL Automático</p>
+            </div>
+        </div>
+    </section>
 
-<!-- Features Section -->
-<section id="recursos" class="features">
-  <div class="container">
-    <div class="section-title">
-      <h2>Tudo que você precisa em uma plataforma</h2>
-      <p>Recursos profissionais para transformar seu restaurante</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🍽️</div><h3>Cardápio Digital</h3><p>Crie e gerencie seu cardápio digital em tempo real com fotos, descrições e preços.</p></div>
-      <div class="feature-card"><div class="feature-icon">🛒</div><h3>Pedidos em Tempo Real</h3><p>Receba pedidos instantaneamente no seu painel administrativo com notificações.</p></div>
-      <div class="feature-card"><div class="feature-icon">💳</div><h3>Pagamentos Seguros</h3><p>Integração com Mercado Pago, PIX, cartão e dinheiro com confirmação automática.</p></div>
-      <div class="feature-card"><div class="feature-icon">📊</div><h3>Relatórios Completos</h3><p>Dashboards com vendas, pedidos, clientes e relatórios financeiros detalhados.</p></div>
-      <div class="feature-card"><div class="feature-icon">📱</div><h3>Integração WhatsApp</h3><p>Automatize confirmações, cardápios e atendimento via WhatsApp Business.</p></div>
-      <div class="feature-card"><div class="feature-icon">⚙️</div><h3>Controle Total</h3><p>Configure disponibilidade, horários, taxas de entrega e muito mais de forma simples.</p></div>
-    </div>
-  </div>
-</section>
+    <!-- Features Section -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tudo que você precisa em uma plataforma</h2>
+                <p>Recursos profissionais para transformar seu restaurante</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-orange">
+                        🍽️
+                    </div>
+                    <h3>Cardápio Digital</h3>
+                    <p>Crie e gerencie seu cardápio digital em tempo real com fotos, descrições e preços.</p>
+                </div>
 
-<!-- Pricing Section -->
-<section id="precos" class="pricing">
-  <div class="container">
-    <div class="section-title">
-      <h2>Preços Simples e Transparentes</h2>
-      <p>Um único plano com tudo incluído</p>
-    </div>
-    <div class="pricing-card">
-      <div class="pricing-badge">Plano Recomendado</div>
-      <h3>Rio Eats Pro</h3>
-      <div class="price">
-        <span class="price-amount">R$ 99,99</span>
-        <span class="price-period">/mês</span>
-      </div>
-      <ul class="features-list">
-        <li>Cardápio digital ilimitado</li>
-        <li>Pedidos em tempo real</li>
-        <li>Integraação Mercado Pago</li>
-        <li>WhatsApp Business</li>
-        <li>Relatórios completos</li>
-        <li>Suporte prioritário</li>
-        <li>Domínio personalizado</li>
-        <li>API completa</li>
-      </ul>
-      <a href="registro.html" class="pricing-btn">Começar Agora</a>
-    </div>
-  </div>
-</section>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">
+                        🛒
+                    </div>
+                    <h3>Pedidos em Tempo Real</h3>
+                    <p>Receba pedidos instantaneamente no seu painel administrativo com notificações.</p>
+                </div>
 
-<!-- CTA Section -->
-<section class="cta">
-  <div class="container">
-    <h2>Pronto para Digitalizar seu Restaurante?</h2>
-    <p>Junte-se a centenas de restaurantes que já transformaram seus negócios</p>
-    <a href="registro.html" class="btn">Criar Conta Gratuita</a>
-  </div>
-</section>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        💳
+                    </div>
+                    <h3>Pagamentos Seguros</h3>
+                    <p>Integração com Mercado Pago, PIX, cartão e dinheiro com confirmação automática.</p>
+                </div>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>🍽️ Rio Eats</h3>
-        <p>A plataforma mais completa para restaurantes digitais.</p>
-      </div
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">
+                        📊
+                    </div>
+                    <h3>Relatórios Completos</h3>
+                    <p>Dashboards com vendas, pedidos, clientes e relatórios financeiros detalhados.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">
+                        📱
+                    </div>
+                    <h3>Integração WhatsApp</h3>
+                    <p>Automatize confirmações, cardápios e atendimento via WhatsApp Business.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-red">
+                        ⚙️
+                    </div>
+                    <h3>Controle Total</h3>
+                    <p>Configure disponibilidade, horários, taxas de entrega e muito mais de forma simples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precos" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preços Simples e Transparentes</h2>
+                <p>Um único plano com tudo incluído</p>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-badge">
+                    Plano Recomendado
+                </div>
+                
+                <h3>Rio Eats Pro</h3>
+                <div class="price">
+                    <span class="price-amount">R$ 99,99</span>
+                    <span class="price-period">/mês</span>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Cardápio digital ilimitado</li>
+                    <li>Pedidos em tempo real</li>
+                    <li>Integração Mercado Pago</li>
+                    <li>WhatsApp Business</li>
+                    <li>Relatórios completos</li>
+                    <li>Suporte prioritário</li>
+                    <li>Domínio personalizado</li>
+                    <li>API completa</li>
+                </ul>
+                
+                <a href="registro.html" class="pricing-btn">
+                    Começar Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para Digitalizar seu Restaurante?</h2>
+            <p>Junte-se a centenas de restaurantes que já transformaram seus negócios</p>
+            <a href="registro.html" class="btn">
+                Criar Conta Gratuita
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ Rio Eats</h3>
+                    <p>A plataforma mais completa para restaurantes digitais.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#precos">Preços</a></li>
+                        <li><a href="demo.html">Demo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><span style="color: #888;">Central de Ajuda</span></li>
+                        <li><span style="color: #888;">Contato</span></li>
+                        <li><span style="color: #888;">Status</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Conecte-se</h4>
+                    <div class="social-links">
+                        <a href="#">📷</a>
+                        <a href="#">👍</a>
+                        <a href="#">💼</a>
+                        <a href="#">📱</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rio Eats. Todos os direitos reservados.</p>
+                <p><span class="rocket">🚀</span> Deploy realizado automaticamente pelo MiniMax Agent</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Status indicator -->
+    <div class="status-indicator">
+        Online
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobileMenu').classList.remove('show');
+            });
+        });
+
+        console.log('🚀 Rio Eats carregado com sucesso!');
+        console.log('📱 Interface otimizada para mobile');
+        console.log('⚡ Deploy automático realizado pelo MiniMax Agent');
+    </script>
+</body>
+</html>
+```
