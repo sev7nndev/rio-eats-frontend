@@ -1,1 +1,1 @@
-{"builds": [{"src": "**/*","use": "@vercel/static"}]}
+{"buildCommand": "echo 'Deploy automático'", "outputDirectory": "./", "framework": "static"}
