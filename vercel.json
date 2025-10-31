@@ -1,1 +1,1 @@
-{"buildCommand": "echo 'Deploy automático'", "outputDirectory": "./", "framework": "static"}
+{"buildCommand": "echo 'Deploy automático'", "outputDirectory": "./"}
