@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rio Eats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Login Form -->
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+                    Faça login na sua conta
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Não tem uma conta?
+                    <a href="registro.html" class="font-medium text-orange-600 hover:text-orange-500">
+                        Criar conta grátis
+                    </a>
+                </p>
+            </div>
+            <form class="mt-8 space-y-6" action="#" method="POST" onsubmit="handleLogin(event)">
+                <div class="rounded-md shadow-sm space-y-4">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input id="email" name="email" type="email" required 
+                               class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm" 
+                               placeholder="seu@email.com">
+                    </div>
+                    
+                    <div>
+                        <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
+                        <input id="senha" name="senha" type="password" required 
+                               class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm" 
+                               placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" 
+                               class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+                            Lembrar de mim
+                        </label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" onclick="alert('Em desenvolvimento!')" class="font-medium text-orange-600 hover:text-orange-500">
+                            Esqueceu a senha?
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" 
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i class="fas fa-lock text-orange-500 group-hover:text-orange-400"></i>
+                        </span>
+                        Entrar
+                    </button>
+                </div>
+
+                <!-- Demo Account -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h3 class="text-sm font-medium text-blue-800 mb-2">💡 Conta Demo</h3>
+                    <p class="text-sm text-blue-700 mb-3">Use estas credenciais para testar:</p>
+                    <button type="button" onclick="fillDemoCredentials()" 
+                            class="w-full bg-blue-100 text-blue-800 py-2 px-4 rounded text-sm font-medium hover:bg-blue-200">
+                        Preencher Credenciais Demo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const senha = formData.get('senha');
+            
+            // Simular login
+            console.log('🔐 Tentativa de login:', { email, senha });
+            
+            // Simular redirecionamento
+            alert('Login realizado com sucesso! Redirecionando para o dashboard...');
+            window.location.href = 'dashboard.html';
+        }
+        
+        function fillDemoCredentials() {
+            document.getElementById('email').value = 'demo@rioeats.com';
+            document.getElementById('senha').value = 'demo123';
+            
+            console.log('📝 Credenciais demo preenchidas');
+        }
+    </script>
+</body>
+</html>
